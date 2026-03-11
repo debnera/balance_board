@@ -1,0 +1,28 @@
+1. Setup bluetooth for sending and reading angle data
+-> DONE
+2. Convert angle data to analog game inputs
+3. Solder and do physical setup
+4. Add angle calibration (device might be upside down etc)
+5. Get bt working from battery power
+--> Fix: removed a while loop waiting for usb-connection
+
+
+
+Key problems solved
+
+- 9-degree IMU raw measurements to 3-degree xyz attitude
+- Bluetooth Low Energy (BLE) to windows connectivity
+-- Not visible through windows settings
+-- Python libraries as solution
+-- Pub-sub, characteristics based communication system (vs bluetooth classic)
+
+- Set bluetooth connection interval to less than 10 ms
+-- Default interval has very noticeable input lag (maybe around 50-100ms)
+
+- Virtual 360 Gamepad controller Python library (vgamepad)
+-- Wireless mouse for additional communication
+
+- Hardware issues
+-- Very simple electronics, but need to make stable attachment to the balance board
+
+- IMU calibration to arbitrary positions
