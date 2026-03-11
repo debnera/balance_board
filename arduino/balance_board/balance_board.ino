@@ -14,7 +14,7 @@
 
  // Bluetooth® Low Energy Battery Service
 BLEService orientationService("19B10000-E8F2-537E-4F6C-D104768A1214");
-BLEStringCharacteristic orientationCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite | BLENotify, 15);
+BLEStringCharacteristic orientationCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite | BLENotify, 30);
 BLEByteCharacteristic pitchCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1215", BLERead | BLEWrite | BLENotify);
 BLEByteCharacteristic rollCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1216", BLERead | BLEWrite | BLENotify);
 
@@ -34,7 +34,7 @@ unsigned long prev_time;
 
 
 void send_orientation() {
-    orientationCharacteristic.writeValue(String(yaw) + "," + String(pitch) + "," + String(roll));
+    orientationCharacteristic.writeValue(String(yaw, 2) + "," + String(pitch, 2) + "," + String(roll, 2));
 
     // Send in bytes to minimize data transmitted
     unsigned char pitch_byte = constrain(pitch + 128, 0, 255);
